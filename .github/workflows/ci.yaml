@@ -1,4 +1,4 @@
-name: CI con AutoCommit
+name: CI sin autocommit y sube artefacto
 
 on:
   push:
@@ -27,8 +27,12 @@ jobs:
       - name: Ejecutar script de tests y actualizar README
         run: python update_readme.py
 
-      - name: Commit automático del README
-        uses: stefanzweifel/git-auto-commit-action@v5
+      
+      - name: Subir artefacto
+        uses: actions/upload-artifact@v4
         with:
-          commit_message: "Update README con estado de tests"
-          file_pattern: README.md
+          name: Artefacto-README
+
+
+
+          
